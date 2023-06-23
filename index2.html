@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>
+        Getting pixel information
+        from html canvas.
+    </title>
+</head>
+ 
+<body>
+    <center>
+        <h1 style="color:green;">
+            GeeksfoGeeks
+        </h1>
+         
+        <h3>
+            Getting pixel information
+            from html canvas
+        </h3>
+ 
+        <canvas id="GFG" width="100" height="100"
+            style="border:1px solid black;">
+        </canvas>
+ 
+        <script>
+             
+            // Retrieve canvas with id GFG,
+            // and store it in a
+            var a = document.getElementById("GFG");
+ 
+            // Retrieve a 2D context for the canvas
+            var geeks = a.getContext("2d");
+ 
+            // Set the filling style to red colour
+            geeks.fillStyle = "blue";
+ 
+            /* Move the cursor to the (x,y) coordinate
+            of (20,20) and then create a rectangle of
+            height and width 60 */
+            geeks.fillRect(20, 20, 60, 60);
+ 
+            /* Define a function find(), that prints
+            the colour/alpha information of the
+            first pixel returned by getImageData()
+            method */
+            function find() {
+                 
+                var ImageData =
+                    geeks.getImageData(20, 20, 60, 60);
+ 
+                /* Stores the red color information of
+                the first pixel */
+                red = ImageData.data[0];
+ 
+                /* Stores the green color information of
+                the first pixel */
+                green = ImageData.data[1];
+ 
+                /* Stores the blue color information of
+                the first pixel */
+                blue = ImageData.data[2];
+ 
+                /* Stores the opacity of the first pixel */
+                alpha = ImageData.data[3];
+                console.log(red);
+                console.log(green);
+                console.log(blue);
+                console.log(alpha);
+            }
+            find();
+        </script>
+    </center>
+</body>
+ 
+</html>    

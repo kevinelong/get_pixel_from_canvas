@@ -1,0 +1,66 @@
+<!-- How to get Pixel from HTML Canvas ? -->
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>
+        Getting pixel information
+        from html canvas.
+    </title>
+</head>
+ 
+<body>
+    <center>
+        <h1 style="color:green;">
+            GeeksfoGeeks
+        </h1>
+         
+        <h3>
+            Getting pixel information
+            from html canvas
+        </h3>
+ 
+        <canvas id="GFG" width="190" height="100"
+                style="border:1px solid black;">
+        </canvas>
+ 
+        <script>
+         
+            /* Retrieve canvas with id GFG,
+                and store it in a */
+            var a = document.getElementById("GFG");
+ 
+            /* Retrieve a 2D context for the canvas */
+            var gfg = a.getContext("2d");
+ 
+ 
+            var geeks =
+                gfg.createLinearGradient(0, 0, 200, 0);
+             
+            geeks.addColorStop(0, "green");
+            geeks.addColorStop(1, "yellow");
+ 
+            gfg.fillStyle = geeks;
+            gfg.fillRect(20, 20, 150, 150);
+ 
+            /* Define a function find(), that prints
+            the array containing pixel information
+            returned by the getImageData() method */
+            function find() {
+ 
+                /* Store the pixel information of
+                the canvas at (x,y) coordinate of
+                (20,20) */
+                var ImageData =
+                    gfg.getImageData(20, 20, 60, 60);
+ 
+                /* Print the array on console */
+                console.log(ImageData);
+            }
+             
+            find();
+        </script>
+    </center>
+</body>
+ 
+</html>

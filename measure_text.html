@@ -1,0 +1,33 @@
+<body style="margin:0;padding:0;background-color: #666666;">
+    <canvas id="canvas" width="640" height="400"></canvas>
+</body>
+<script>
+    const BLACK = "#000000";
+    const ACID_GREEN = "#00ff00";
+    const text = "CLEVER";
+
+    const ctx = canvas.getContext("2d");
+    ctx.font = "12px Verdana";
+
+    const m = ctx.measureText(text);
+    const height = Math.ceil(m.actualBoundingBoxAscent + m.actualBoundingBoxDescent);
+    const width = Math.ceil(m.actualBoundingBoxRight);
+    const MARGIN = 10;
+    ctx.fillStyle = BLACK;
+    ctx.strokekStyle = BLACK;
+    ctx.fillRect(MARGIN, MARGIN, width, height);
+
+    ctx.fillStyle = ACID_GREEN;
+    ctx.strokekStyle = ACID_GREEN;
+    ctx.fillText(text, MARGIN, height + MARGIN)
+
+//ctx.stroke();
+// document.body.innerHTML += JSON.stringify(m);
+// TextMetrics { 
+//     width: 46.766666412353516, 
+//     actualBoundingBoxLeft: 0.326171875, 
+//     actualBoundingBoxRight: 47.82395833333333, 
+//     actualBoundingBoxAscent: 8.8828125, 
+//     actualBoundingBoxDescent: 0.158203125 
+// }
+</script>
