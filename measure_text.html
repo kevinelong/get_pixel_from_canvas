@@ -10,17 +10,38 @@
     ctx.font = "12px Verdana";
 
     const m = ctx.measureText(text);
-    const height = Math.ceil(m.actualBoundingBoxAscent + m.actualBoundingBoxDescent);
+    const height = 2 + Math.ceil(m.actualBoundingBoxAscent + m.actualBoundingBoxDescent);
     const width = Math.ceil(m.actualBoundingBoxRight);
-    const MARGIN = 10;
+    const MARGIN = 11;
     ctx.fillStyle = BLACK;
     ctx.strokekStyle = BLACK;
     ctx.fillRect(MARGIN, MARGIN, width, height);
 
     ctx.fillStyle = ACID_GREEN;
     ctx.strokekStyle = ACID_GREEN;
-    ctx.fillText(text, MARGIN, height + MARGIN)
+    ctx.fillText(text, MARGIN, height + MARGIN - 1)
 
+    var image = ctx.getImageData(MARGIN, MARGIN, width, height);
+ console.log(image);
+
+ SCALE = 5;
+ GAP = 2;
+
+ OUTPUT_OFFSET = 64
+         //draw
+ctx.clearRect(0, 0, width, height);
+for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+        let i = (((y * width) + x) * 4) + 1;
+        console.log(i)
+        value = image.data[i] 
+        console.log(value)
+        if (value > 0) {
+            ctx.fillRect(OUTPUT_OFFSET + x * SCALE, OUTPUT_OFFSET + y * SCALE, SCALE - GAP, SCALE - GAP);
+        }
+    }
+}
+ctx.stroke(); 
 //ctx.stroke();
 // document.body.innerHTML += JSON.stringify(m);
 // TextMetrics { 
