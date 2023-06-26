@@ -4,10 +4,10 @@
 <script>
     const BLACK = "#000000";
     const ACID_GREEN = "#00ff00";
-    const text = "CLEVER";
+    const text = "0123456789";
 
     const ctx = canvas.getContext("2d");
-    ctx.font = "12px Verdana";
+    ctx.font = "12px Arial";
 
     const m = ctx.measureText(text);
     const height = 2 + Math.ceil(m.actualBoundingBoxAscent + m.actualBoundingBoxDescent);
@@ -24,20 +24,21 @@
     var image = ctx.getImageData(MARGIN, MARGIN, width, height);
  console.log(image);
 
- SCALE = 5;
+ SCALE = 4;
  GAP = 2;
 
  OUTPUT_OFFSET = 64
          //draw
 ctx.clearRect(0, 0, width, height);
+
 for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
         let i = (((y * width) + x) * 4) + 1;
         console.log(i)
         value = image.data[i] 
         console.log(value)
-        if (value > 0) {
-            ctx.fillRect(OUTPUT_OFFSET + x * SCALE, OUTPUT_OFFSET + y * SCALE, SCALE - GAP, SCALE - GAP);
+        if (value > 130) {
+            ctx.fillRect(OUTPUT_OFFSET + x * SCALE, OUTPUT_OFFSET + y * SCALE, SCALE - GAP, SCALE - (GAP));
         }
     }
 }
